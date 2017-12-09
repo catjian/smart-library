@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>湖北智库</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/HomePage/SearchFromInStation.js"></script>
+    <script src="js/HomePage/HomePageManager.js"></script>
+    <script src="js/ArticleSortManager.js"></script>
+    <script src="js/findExpertByLetter.js"></script>
+    <script src="js/findOrganizationByLetter.js"></script>
+    <script src="js/findResultByCriteria.js"></script>
+    <script src="js/dataBaseObject.js"></script>
+</head>
+<body>
+    <div class="index-logo">
+        <img id="indexHeaderImage" src="img/index-logo.jpg" width="100%">
+        <div class="container">
+            <div class="header-search">
+                <ul>
+                    <li><span class="login-bar right"><a href="http://47.104.8.66/home">登录</a><a href="register.html" style="display: none">注册</a></span></li>
+                    <li>
+                        <a class="btn-search border-radius5 right" onclick="searchByContentValue()">搜索</a>
+                        <input type="text" class="input-230 border-radius5 right">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="navbar">
+        <div class="container" id="container">
+            <ul>
+                <li><a href="index.html" class="current">智库首页</a></li>
+                <li><a href="hotspots.html">决策热点</a></li>
+                <li><a href="notice.html">通知公告</a></li>
+                <li><a href="conference.html">会议集萃</a></li>
+                <li><a href="forum.html">智库论坛</a></li>
+                <li><a href="expert.html">智库专家</a></li>
+                <li><a href="union.html">智库联盟</a></li>
+                <li><a href="organization.html">智库机构</a></li>
+                <li><a href="achievements.html">智库成果</a></li>
+                <li><a href="database.html">智库数据库</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="main">
+            <!-- part-one -->
+            <div class="banner mt20 mb15">
+                <div class="banner-photo left">
+                    <div class="section-focus-pic" id="section-focus-pic">
+                        <div class="pages" data-scro="list">
+                            <ul>
+                                <!--<li class="item" style="left:0;">-->
+                                    <!--<a href="http://www.17sucai.com/" target="_blank"><img src="img/banner.jpg"></a>-->
+                                    <!--<h3><a href="http://www.17sucai.com/" target="_blank">中外智库调研研讨会在武汉举行</a></h3>-->
+                                    <!--<div></div>-->
+                                <!--</li>-->
+                                <!--<li class="item">-->
+                                    <!--<a href="http://www.17sucai.com/" target="_blank"><img src="img/banner.jpg"></a>-->
+                                    <!--<h3><a href="http://www.17sucai.com/" target="_blank">22中外智库调研研讨会在武汉举行</a></h3>-->
+                                    <!--<div></div>-->
+                                <!--</li>-->
+                                <!--<li class="item">-->
+                                    <!--<a href="http://www.17sucai.com/" target="_blank"><img src="img/banner.jpg"></a><h3>-->
+                                    <!--<a href="http://www.17sucai.com/" target="_blank">33中外智库调研研讨会在武汉举行</a></h3>-->
+                                    <!--<div></div>-->
+                                <!--</li>-->
+                            </ul>
+                        </div>
+                        <div class="controler" data-scro="controler">
+                            <b class="down">1</b>
+                            <b>2</b>
+                            <b>3</b>
+                        </div>
+                        <!-- <div class="controler2" data-scro="controler2">
+                            <a href="javascript:;" class="prev"><i></i></a>
+                            <a href="javascript:;" class="next"><i></i></a>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="banner-news right bg-gray">
+                    <div class="p0_17">
+                        <h3 class="news-title"><strong>政策法规</strong><a href="zcfg.html">更多 &gt&gt</a></h3>
+                        <ul class="news-list pt20" id="zcfg-list">
+                            <!--<li><span>09-24</span><a href="##">建立国有企业信息公开披露制度建立国有企业信息公开披露制度</a></li>-->
+                            <!--<li><span>09-24</span><a href="##">突破智能制造的政策环境制约</a></li>-->
+                            <!--<li><span>09-24</span><a href="##">大型银行战略转型的两大任务</a></li>-->
+                            <!--<li><span>09-24</span><a href="##">如何建立健全数字货币监管框架</a></li>-->
+                            <!--<li><span>09-24</span><a href="##">“一带一路”沿线中国企业</a></li>-->
+                            <!--<li><span>09-24</span><a href="##">习近平治国理政思想的深邃哲</a></li>-->
+                            <!--<li><span>09-24</span><a href="##">论中国特色社会主义的创新发</a></li>-->
+                            <!--<li><span>09-24</span><a href="##">建立国有企业信息公开披露制度</a></li>-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- part-two -->
+            <div class="col-2 hidden">
+                <div class="col-left pt15">
+                    <h3 class="news-title-lg"><img src="img/news-icon.png" class="left"><strong>优选资讯</strong><a href="news.html">更多 &gt&gt</a></h3>
+                    <div class="col-left-list" id="articleList">
+                        <ul class="news-list-lg">
+                            <!--<li>-->
+                                <!--<div><img src="img/news.jpg" alt=""></div>-->
+                                <!--<h4>中国的渐进式经济政策与金融市场</h4>-->
+                                <!--<p>智能化将对企业产生深远影响，智能化革命为中国企 业转型升级提供了巨大机遇，需要积极应对。产品智 能化的浪潮正扑面而智能化将对企业产生深远影响，智能化革命为中国企 业转型升级提供了巨大机遇，需要积极应对。产品智 能化的浪潮正扑面而</p>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<div><img src="img/news.jpg" alt=""></div>-->
+                                <!--<h4>中国的渐进式经济政策与金融市场</h4>-->
+                                <!--<p>智能化将对企业产生深远影响，智能化革命为中国企 业转型升级提供了巨大机遇，需要积极应对。产品智 能化的浪潮正扑面而智能化将对企业产生深远影响，智能化革命为中国企 业转型升级提供了巨大机遇，需要积极应对。产品智 能化的浪潮正扑面而</p>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<div><img src="img/news.jpg" alt=""></div>-->
+                                <!--<h4>中国的渐进式经济政策与金融市场</h4>-->
+                                <!--<p>智能化将对企业产生深远影响，智能化革命为中国企 业转型升级提供了巨大机遇，需要积极应对。产品智 能化的浪潮正扑面而智能化将对企业产生深远影响，智能化革命为中国企 业转型升级提供了巨大机遇，需要积极应对。产品智 能化的浪潮正扑面而</p>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<div><img src="img/news.jpg" alt=""></div>-->
+                                <!--<h4>中国的渐进式经济政策与金融市场</h4>-->
+                                <!--<p>智能化将对企业产生深远影响，智能化革命为中国企 业转型升级提供了巨大机遇，需要积极应对。产品智 能化的浪潮正扑面而智能化将对企业产生深远影响，智能化革命为中国企 业转型升级提供了巨大机遇，需要积极应对。产品智 能化的浪潮正扑面而</p>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<div><img src="img/news.jpg" alt=""></div>-->
+                                <!--<h4>中国的渐进式经济政策与金融市场</h4>-->
+                                <!--<p>智能化将对企业产生深远影响，智能化革命为中国企 业转型升级提供了巨大机遇，需要积极应对。产品智 能化的浪潮正扑面而智能化将对企业产生深远影响，智能化革命为中国企 业转型升级提供了巨大机遇，需要积极应对。产品智 能化的浪潮正扑面而</p>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<div><img src="img/news.jpg" alt=""></div>-->
+                                <!--<h4>中国的渐进式经济政策与金融市场</h4>-->
+                                <!--<p>智能化将对企业产生深远影响，智能化革命为中国企 业转型升级提供了巨大机遇，需要积极应对。产品智 能化的浪潮正扑面而智能化将对企业产生深远影响，智能化革命为中国企 业转型升级提供了巨大机遇，需要积极应对。产品智 能化的浪潮正扑面而</p>-->
+                            <!--</li>-->
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-right">
+                    <!-- 智库成果 -->
+                    <div class="zkcg bg-gray">
+                        <div class="p0_17">
+                            <h3 class="news-title"><strong>智库成果</strong><a href="achievements.html">更多 &gt&gt</a></h3>
+                            <ul class="zkcg-list" id="zkcg-list">
+                                <!--<li>-->
+                                    <!--<div class="left"><img src="img/zkcg.jpg" alt=""></div>-->
+                                    <!--<h4><a href="##">建立国有企业信息公开披露建立国有企业信息公开披露建立国有企业信息公开披露 制度</a></h4>-->
+                                    <!--<p>2017-09-23</p>-->
+                                <!--</li>-->
+                                <!--<li>-->
+                                    <!--<div class="left"><img src="img/zkcg.jpg" alt=""></div>-->
+                                    <!--<h4><a href="##">建立国有企业信息公开披露建立国披露</a></h4>-->
+                                    <!--<p>2017-09-23</p>-->
+                                <!--</li>-->
+                                <!--<li>-->
+                                    <!--<div class="left"><img src="img/zkcg.jpg" alt=""></div>-->
+                                    <!--<h4><a href="##">建立国有企业信息公开披露 制度</a></h4>-->
+                                    <!--<p>2017-09-23</p>-->
+                                <!--</li>-->
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tpp">
+                        <a><img src="img/tpp.jpg" alt=""></a>
+                    </div>
+                    <!-- data base -->
+                    <div class="dataBase bg-gray">
+                        <div class="p0_17">
+                            <h3 class="news-title"><strong>数据库</strong></h3>
+                            <div class="base-tabs">
+                                <ul class="base-title">
+                                    <li><a class="current">专家库</a></li>
+                                    <li><a >机构库</a></li>
+                                    <li><a >成果库</a></li>
+                                    <li><a >数据库</a></li>
+                                </ul>
+                                <div class="base-content relative" id="database_content">
+                                    <div class="base-sort hidden" id="base-sort-hidden">
+                                        <ul>
+                                            <li><a href="##">A</a></li>
+                                            <li><a href="">B</a></li>
+                                            <li><a href="">C</a></li>
+                                            <li><a href="">D</a></li>
+                                            <li><a href="">E</a></li>
+                                            <li><a href="">F</a></li>
+                                            <li><a href="">G</a></li>
+                                            <li><a href="">H</a></li>
+                                            <li><a href="">I</a></li>
+                                            <li><a href="">J</a></li>
+                                            <li><a href="">K</a></li>
+                                            <li><a href="">L</a></li>
+                                            <li><a href="">M</a></li>
+                                        </ul>
+                                        <ul>
+                                            <li><a href="">N</a></li>
+                                            <li><a href="">O</a></li>
+                                            <li><a href="">P</a></li>
+                                            <li><a href="">Q</a></li>
+                                            <li><a href="">R</a></li>
+                                            <li><a href="">S</a></li>
+                                            <li><a href="">T</a></li>
+                                            <li><a href="">U</a></li>
+                                            <li><a href="">V</a></li>
+                                            <li><a href="">W</a></li>
+                                            <li><a href="">X</a></li>
+                                            <li><a href="">Y</a></li>
+                                            <li><a href="">Z</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="base-result" id="database_sub_content">
+                                        <ul class="hidden">
+                                            <!--<li><a href="##">崔传艺</a></li>-->
+                                            <!--<li><a href="">陈信元</a></li>-->
+                                            <!--<li><a href="">陈信元</a></li>-->
+                                            <!--<li><a href="">崔传艺</a></li>-->
+                                            <!--<li><a href="">陈信元</a></li>-->
+                                            <!--<li><a href="">崔传</a></li>-->
+                                            <!--<li><a href="">崔传艺</a></li>-->
+                                            <!--<li><a href="">陈信元</a></li>-->
+                                            <!--<li><a href="">崔传</a></li>-->
+                                            <!--<li><a href="">崔传艺</a></li>-->
+                                            <!--<li><a href="">陈信元</a></li>-->
+                                            <!--<li><a href="">陈信元</a></li>-->
+                                            <!--<li><a href="">崔传艺</a></li>-->
+                                            <!--<li><a href="">陈信元</a></li>-->
+                                            <!--<li><a href="">崔传</a></li>-->
+                                            <!--<li><a href="">崔传艺</a></li>-->
+                                            <!--<li><a href="">陈信元</a></li>-->
+                                            <!--<li><a href="">崔传</a></li>-->
+                                            <!--<li><a href="">崔传艺</a></li>-->
+                                            <!--<li><a href="">陈信元</a></li>-->
+                                            <!--<li><a href="">崔传</a></li>-->
+                                            <!--<li><a href="">崔传艺</a></li>-->
+                                            <!--<li><a href="">陈信元</a></li>-->
+                                            <!--<li><a href="">陈信元</a></li>-->
+                                            <!--<li><a href="">崔传艺</a></li>-->
+                                            <!--<li><a href="">崔传</a></li>-->
+                                            <!--<li><a href="">陈信元</a></li>-->
+                                            <!-- <li><a href="">陈信元</a></li> -->
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="navbanner mb15"><a><img src="img/nav-banner.jpg" alt=""></a></div>
+            <!-- part-two -->
+            <div class="col-2 hidden">
+                <div class="col-left">
+                    <h3 class="news-title-lg"><img src="img/news-icon.png" class="left"><strong>音视频</strong><a href="video.html">更多 &gt&gt</a></h3>
+                    <div class="video" id="findVideoNews">
+                        <dl class="hidden">
+                            <!--<dt><img src="img/news.jpg" height="209" width="350"></dt>-->
+                            <!--<dd>-->
+                                <!--<h4>马化腾：我们怎么看科技和商业的结合？</h4>-->
+                                <!--<p>2016年1月18日，第19期互联网前沿沙龙上，第19期互联网前沿沙龙上，第19期互联网前沿沙龙上，第19期互联网前沿沙龙上，国润投资基金董事长兼主管合伙人王鹏威介绍了国润投资基金投资媒体的策略。王鹏威提出，新媒体投资主要有两种策略，一是“狙击手”策略，二是“广泛撒网”。此外，他还表示新媒体和传统媒体本身没有本质的区别，新旧只是二者的</p>-->
+                            <!--</dd>-->
+                        </dl>
+                    </div>
+                </div>
+                <div class="col-right bg-gray">
+                    <div class="p0_17">
+                        <h3 class="news-title"><strong>采购信息</strong><a href="buying.html">更多 &gt&gt</a></h3>
+                        <ul class="news-list pt20" id="cgxx-list">
+                            <!--<li><span>09-24</span><a href="buying-details.html">建立国有企业信息公开披露制度建立国有企业信息公开披露制度</a></li>-->
+                            <!--<li><span>09-24</span><a href="##">突破智能制造的政策环境制约</a></li>-->
+                            <!--<li><span>09-24</span><a href="##">大型银行战略转型的两大任务</a></li>-->
+                            <!--<li><span>09-24</span><a href="##">如何建立健全数字货币监管框架</a></li>-->
+                            <!--<li><span>09-24</span><a href="##">“一带一路”沿线中国企业</a></li>-->
+                            <!--<li><span>09-24</span><a href="##">习近平治国理政思想的深邃哲</a></li>-->
+                            <!--<li><span>09-24</span><a href="##">论中国特色社会主义的创新发</a></li>-->
+                            <!--<li><span>09-24</span><a href="##">建立国有企业信息公开披露制度</a></li>-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- end -->
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container relative">
+            <img src="img/footer-icon-left.gif" alt="" class="footer-icon-left">
+            <img src="img/footer-icon-right.gif" alt="" class="footer-icon-right">
+            <ul>
+                <li><a href="">关于我们</a></li>
+                <li><a href="">联系我们</a></li>
+                <li>400-8640-788</li>
+                <li>客服邮件：dahuo@niub.la</li>
+                <li>智库官网 版权所有 鄂ICP备14001631</li>
+            </ul>
+            <div class="ewm"><img src="img/ewm.gif">微信公众号</div>
+        </div>
+    </div>
+    <script src="http://www.17sucai.com/preview/77697/2015-09-06/jiaoben1484/js/jQuery.1.8.2.min.js"></script>
+    <script src="http://www.17sucai.com/preview/77697/2015-09-06/jiaoben1484/js/script.js"></script>
+</body>
+<script>
+    var baseTitleIndex = 0;
+    var sonsortArr27 = [];
+    var sonsortArr28 = [];
+    findTitleImageByState();
+    getArticleSonSort(0, function (result) {
+        if (result != null) {
+            sonsortArr = result;
+        }
+
+        selectArticleSort(33,27,0, function (result) {
+            var content = '';
+            if (result == null) {
+                document.getElementById("cgxx-list").innerHTML = content;
+                return;
+            }
+            sonsortArr27 = result;
+            for(var j = 0; j < result.length; j++) {
+                var subObj = result[j];
+                content += '<li><span>'+subObj.addTime+'</span><a href="buying-details.html?'+subObj.id+'">'+subObj.content+'</a></li>';
+            }
+            document.getElementById("cgxx-list").innerHTML = content;
+        });
+
+        selectArticleSort(28,0,0, function (result) {
+            var content = '';
+            if (result == null) {
+                document.getElementById("zkcg-list").innerHTML = content;
+                return;
+            }
+            sonsortArr28 = result;
+            content = '<ul>';
+            for(var j = 0; j < result.length; j++) {
+                var subObj = result[j];
+                content += '<li>';
+                content += '<div class="left"><img src='+subObj.imgUrl+' alt=""></div>';
+                content += '<h4><a href="achievements-details.html?'+subObj.id+'">'+subObj.content+'</a></h4>';
+                content += '<p>'+subObj.createDate+'</p>';
+                content += '</li>';
+            }
+            content += '</ul>';
+            document.getElementById("zkcg-list").innerHTML = content;
+        });
+        selectArticleSort(36,0,0, function (result) {
+            var content = '';
+            if (result == null) {
+                document.getElementById("zcfg-list").innerHTML = content;
+                return;
+            }
+            sonsortArr27 = result;
+            for(var j = 0; j < result.length; j++) {
+                var subObj = result[j];
+                content += 'li><span>'+subObj.createDate+'</span><a href="zzfg-details.html?'+subObj.id+'">'+subObj.content+'</a></li>';
+            }
+            document.getElementById("zcfg-list").innerHTML = content;
+        });
+    });
+    getRecommendArticle(0);
+    getArticle(41);
+    findVideoNews(0,1);
+
+    function indexLetterNameClickEvent(event, objc, subid) {
+        switch (baseTitleIndex) {
+            case 0: {
+                window.location.href = "expert-details.html?"+subid;
+            }
+                break;
+            case 1: {
+                window.location.href = "organization.html?"+subid;
+            }
+                break;
+            case 2: {
+                window.location.href = "achievements-details.html?"+subid;
+            }
+                break;
+            default: {
+                window.location.href = "database-details.html?"+subid;
+            }
+                break;
+        }
+    }
+
+    function renderDataBaseSubContent(result) {
+        var content = '';
+        document.getElementById("database_sub_content").innerHTML = content;
+        var length = function () {
+            var count = 0;
+            for (var i in result) {
+                count++;
+            }
+            return count;
+        };
+        if (length() > 0) {
+                    switch (baseTitleIndex) {
+                        case 0:
+                        case 1: {
+                            for (var i in result) {
+                                var objArr = result[i];
+                                if (objArr.length == 0) {
+                                    continue;
+                                }
+                                for (var j = 0; j < objArr.length; j++) {
+                                    var subObj = objArr[j];
+                                    content += '<li><a href="##' + subObj.id + '&' + i + '" onclick="indexLetterNameClickEvent(event, this,' + subObj.id + ')">' + subObj.name + '</a></li>';
+                                }
+                            }
+                            document.getElementById("base-sort-hidden").hidden = false;
+                            document.getElementById("database_sub_content").innerHTML = content;
+                        }
+                            break;
+                        case 2:
+                        default: {
+                            for (var i in result) {
+                                var subObj = result[i];
+                                content += '<li><a href="##' + subObj.id + '&' + i + '" onclick="indexLetterNameClickEvent(event, this,' + subObj.id + ')">' + subObj.title.substring(0,3) + '</a></li>';
+                            }
+                            document.getElementById("base-sort-hidden").hidden = true;
+                            document.getElementById("database_sub_content").innerHTML = content;
+                        }
+                            break;
+                    }
+        }
+    }
+    function loadExpertByLetter(letter) {
+        document.getElementById("database_sub_content").innerHTML = '';
+        switch (baseTitleIndex) {
+            case 0: {
+                findExpertByLetter(letter, 0, function (result) {
+                    renderDataBaseSubContent(result);
+                });
+            }
+                break;
+            case 1: {
+                findOrganizationByLetter(letter, 0, function (result) {
+                    renderDataBaseSubContent(result);
+                });
+            }
+                break;
+            case 2: {
+                getArticleList(function (result) {
+                    renderDataBaseSubContent(result);
+                })
+            }
+                break;
+            default: {
+                getDatabase(null, null, null, 0 ,10, function (result) {
+                    renderDataBaseSubContent(result);
+                });
+            }
+                break;
+        }
+    }
+    loadExpertByLetter(null);
+
+    $(function () {
+        $("#database_content li").click(function () {
+            var txt = $(this).children().text();
+            loadExpertByLetter(txt);
+        })
+        $('.base-title a').click(function () {
+            var subArr = $('.base-title').find('a');
+            baseTitleIndex = subArr.index($(this));
+            for (var i = 0; i < subArr.length; i++) {
+                var suba = subArr[i];
+                suba.className = '';
+            }
+            subArr[baseTitleIndex].className = 'current';
+            loadExpertByLetter(null);
+        })
+    })
+
+    function RecommendListClickEvent() {
+        var contentId = window.location.hash.toString();
+        contentId = contentId.substring(2,contentId.length);
+        var allContentArr = kindContentArr;
+        allContentArr.push.apply(allContentArr,recommendContentArr);
+        allContentArr.push.apply(allContentArr,newestContentArr);
+        for (var i = 0; i < allContentArr.length; i++) {
+            var subObj = allContentArr[i];
+            if (subObj.id.toString() == contentId) {
+                console.log("sdfs");
+                break;
+            }
+        }
+//        window.location.href = "news-details.html?"+contentId;
+    }
+
+    function articleClickEvent(subid) {
+//        alert(subid)
+
+    }
+    
+    function videonewsClickEvent(subid) {
+//        alert(subid)
+
+    }
+
+</script>
+</html>
