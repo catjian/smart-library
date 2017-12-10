@@ -25,6 +25,11 @@
                         <a class="btn-search border-radius5 right" onclick="searchByContentValue()">搜索</a>
                         <input type="text" class="input-230 border-radius5 right" placeholder="请输入关键字">
                     </li>
+                    <li style="position:absolute;top:30px;font-size:16px;width:360px;">
+                            <script>
+                                document.write((zjd=new Date()).getFullYear()+"年"+(zjd.getMonth()+1)+"月"+zjd.getDate() + "日 星期"+"日一二三四五六".charAt(zjd.getDay()));
+                            </script>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -33,7 +38,7 @@
         <div class="container" id="container">
             <ul>
                 <li><a href="index.html" class="current">智库首页</a></li>
-                <li><a href="hotspots.html">智库要闻</a></li>
+                <li><a href="zkywList.html">智库要闻</a></li>
                 <li><a href="hotspots.html">决策热点</a></li>
                 <li><a href="notice.html">通知公告</a></li>
                 <li><a href="conference.html">会议集萃</a></li>
@@ -84,7 +89,7 @@
                 </div>
                 <div class="banner-news right bg-gray">
                     <div class="p0_17">
-                        <h3 class="news-title"><strong>政策法规</strong><a href="zcfg.html">更多 &gt&gt</a></h3>
+                        <h3 class="news-title"><strong>决策热点</strong><a href="hotspots.html">更多 &gt&gt</a></h3>
                         <ul class="news-list pt20" id="zcfg-list">
                             <!--<li><span>09-24</span><a href="##">建立国有企业信息公开披露制度建立国有企业信息公开披露制度</a></li>-->
                             <!--<li><span>09-24</span><a href="##">突破智能制造的政策环境制约</a></li>-->
@@ -263,7 +268,7 @@
             <!-- part-two -->
             <div class="col-2 hidden">
                 <div class="col-left">
-                    <h3 class="news-title-lg"><img src="img/news-icon.png" class="left"><strong>音视频</strong><a href="video.html">更多 &gt&gt</a></h3>
+                    <h3 class="news-title-lg"><img src="img/news-icon.png" class="left"><strong>音视频</strong><a href="listvideo.html">更多 &gt&gt</a></h3>
                     <div class="video" id="findVideoNews">
                         <dl class="hidden">
                             <!--<dt><img src="img/news.jpg" height="209" width="350"></dt>-->

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>智库机构-研究项目-详情</title>
+    <title>音频视频-详情</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/jquery.min.js"></script>
     <script src="js/HomePage/HomePageManager.js"></script>
@@ -28,32 +28,30 @@
     <div class="navbar">
         <div class="container">
                 <ul>
-                    <li><a href="index.html">智库首页</a></li>
+                    <li><a href="index.html" class="current">智库首页</a></li>
                     <li><a href="zkywList.html">智库要闻</a></li>                <li><a href="hotspots.html">决策热点</a></li>                <li><a href="notice.html">通知公告</a></li>
                     <li><a href="conference.html">会议集萃</a></li>
                     <li><a href="forum.html">智库论坛</a></li>
                     <li><a href="expert.html">智库专家</a></li>
                     <li><a href="union.html">智库联盟</a></li>
-                    <li><a href="organization.html" class="current">智库机构</a></li>
+                    <li><a href="organization.html">智库机构</a></li>
                     <li><a href="achievements.html">智库成果</a></li>
                     <li><a href="database.html">数据库</a></li>
                 </ul>
         </div>
     </div>
-    <div class="current-nav" id="current-nav">您当前位置：研究项目>研究计划>详情</div>
+    <div class="current-nav">您当前位置：音频视频 > 详情</div>
     <div class="listContent-details">
-        <div class="article" id="article">
-            <!--<h3 class="relative">张忠家到马研所支部指导省第十一次党代会精神专题学习-->
-                <!--<p>2017-09-22</p>-->
-            <!--</h3>-->
+        <div class="article articel-video" id="articel-video">
+            <!--<div class="video-play"><img src="img/video.jpg" width="100%" alt=""></div>-->
+            <!--<h3 class="video-title">视频详情</h3>-->
             <!--<div class="article-content pt50 pb100">-->
-                <!--<p>2017年6月25日上午，中国共产党湖北省第十一次代表大会在武昌洪山礼堂隆重开幕。蒋超良同志代表中共湖北-->
-                        <!--省第十届委员会向大会作了题为《高举旗帜牢记嘱托 全面建成小康社会 开启湖北“建成支点、走在前列”新征程》-->
-                        <!--的报告。7月6日，省社科院党组书记张忠家同志作为马研所支部普通党员、院党组联系基层支部的院领导</p>-->
-                <!--<p>张书记首先介绍省党代会圆满完成了预定议程，取得了丰硕成果，吹响了全面建成小康社会、开启湖北“建成支-->
-                        <!--点、走在前列”新征程的进军号角。接着谈了这次作为会议列席人员，当场聆听以及之后反复学习报告后的体会。-->
-                        <!--他认为，总的来说，省党代会报告体现了“三个突出”，明确了“两个任务”，“坚持了“一条主线”。</p>-->
-                <!--<p class="p10_0"><img src="img/article.jpg" width="100%" alt=""></p>-->
+                <!--<h1>中国法学会知识产权研究会名誉会长吴汉东：创新发展与知识产权</h1>-->
+                <!--<p>未来20年，中国制造要走向中国创造，需要互联网与制造业深度融合，成功的关键在于，中国能否形成软件、-->
+                        <!--硬件与服务三位一体的智能平台和创新生态。</p>-->
+                <!--<p>我今天的讲题是“创新发展与知识产权”。首先我想谈谈创新发展与知识产权的一般关系。对这个问题，我-->
+                        <!--想在此表达两个基本观点。第一，知识经济时代的特征是创新发展。第二，知识产权是创新发展的核心制度。</p>-->
+                <!---->
                 <!--<p>Brian Kobilka和张教授都来自斯坦福，大家知道斯坦福是硅谷创新的发源地，很大的特点就是把科技和商业-->
                         <!--完美有机地结合在一起，我觉得这个是非常值得全球尤其是中国去学习的。</p>-->
                 <!--<p>虽然说中国没有像国外的斯坦福、哈佛这样的私立学校，更多的还是公立学校，但是我们还是做了很多创新-->
@@ -113,6 +111,8 @@
     </div>
 </body>
 <script>
+
+
     getKind(1);
     getRecommendArticle(1);
     getNewestArticle();
@@ -124,28 +124,23 @@
             contentId = contentId.split('&');
         }
 
-        document.getElementById("current-nav").textContent = "您当前位置：研究项目 > "+decodeURI(contentId[1])+" > 详情";
+//        $(".current-nav").textContent = "您当前位置：决策热点 > "+decodeURI(contentId[1])+" > 详情";
 
-        selectArticleDetails(contentId[0],function (result) {
+        selectVideoDetails(contentId[0],function (result) {
             if (result != null) {
-                var content = '<h3 class="relative">' + result.title;
-                content += '<p>'+result.addTime+'</p>';
-                content += '</h3>';
-                content += '<div class="article-content pt50 pb100">';
-                content += '<p>' + result.content + '</p>';
-                content += '</div>';
-                document.getElementById("article").innerHTML = content;
+                var content = '<div class="video-play"><video src="'+result.videoUrl+'" controls="controls" width="100%" autoplay="autoplay"></div>';
+                    content += '<h3 class="video-title">视频详情</h3>';
+                content +=   '<div class="article-content pt50 pb100">';
+                content +=   '<h1>'+result.title+'</h1>';
+                content += '<p>'+result.content+'</p>';
+                document.getElementById("articel-video").innerHTML = content;
             }
         });
     }
     loadHtmlContent(-1);
 
     function RecommendListClickEvent(subid) {
-        contentId = window.location.search.toString();
-        contentId = contentId.substring(1, contentId.length);
-        contentId = contentId.split('&');
-        window.location.href = 'org-project-details.html?'+subid+'&'+decodeURI(contentId[1]);
+        window.location.href = 'news-details.html?'+subid;
     }
-
 </script>
 </html>

@@ -28,15 +28,14 @@
         <div class="container">
                 <ul>
                     <li><a href="index.html" class="current">智库首页</a></li>
-                    <li><a href="hotspots.html">决策热点</a></li>
-                    <li><a href="notice.html">通知公告</a></li>
+                    <li><a href="zkywList.html">智库要闻</a></li>                <li><a href="hotspots.html">决策热点</a></li>                <li><a href="notice.html">通知公告</a></li>
                     <li><a href="conference.html">会议集萃</a></li>
                     <li><a href="forum.html">智库论坛</a></li>
                     <li><a href="expert.html">智库专家</a></li>
                     <li><a href="union.html">智库联盟</a></li>
                     <li><a href="organization.html">智库机构</a></li>
                     <li><a href="achievements.html">智库成果</a></li>
-                    <li><a href="database.html">智库数据库</a></li>
+                    <li><a href="database.html">数据库</a></li>
                 </ul>
         </div>
     </div>
@@ -48,7 +47,7 @@
                     <!--<img src="img/news-list.jpg" alt="">-->
                     <!--<img src="img/video.png" alt="" class="btn-video">-->
                 <!--</div>-->
-                <!--<h3><a href="video-details.html">湖北省社科院党组书记张忠家参加 “十月革命与中国特色社会主义”理论研讨会</a></h3>-->
+                <!--<h3><a href="listvideo-details.html">湖北省社科院党组书记张忠家参加 “十月革命与中国特色社会主义”理论研讨会</a></h3>-->
                 <!--<p>在俄国十月革命胜利100周年前夕，“十月革命与中国特色社会主义”理论研讨会于2017年-->
                         <!--9月26日在京举行。中共中央政治局委员、中央书记处书记、中宣部部长刘奇葆出席并讲话，-->
                         <!--强调要深入学习贯彻习近平总书记系列重要讲话精神，深刻认识十月革命的伟大意义和深远影响，-->
@@ -123,7 +122,7 @@
         for(var j = 0; j < result.length; j++) {
             var subObj = result[j];
             content += '<li>';
-            content += '<a href="video-details.html?' + subObj.id + '&音频视频" onclick="videoNewsClickEvent('+subObj.id +')">';
+            content += '<a href=' + subObj.id + '"listvideo-details.html?&音频视频" onclick="videoNewsClickEvent('+subObj.id +')">';
             content += '<div class="img"><img src="'+subObj.videoUrl+'" alt=""><img src="img/video.png" alt="" class="btn-video"></div>';
                 content += '<h3>'+subObj.title+'</h3>';
             content += '<p>'+subObj.content+'</p>';

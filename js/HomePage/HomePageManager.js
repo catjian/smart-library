@@ -112,7 +112,7 @@ function findVideoNews(index,size,callBack) {
                         videoNews = resultArr[0];
                         var content = '<dl class="hidden">';
                         content += '<li>';
-                        content += '<a href="video-details.html?' + videoNews.id + '" onclick="videonewsClickEvent('+videoNews.id +')">';
+                        content += '<a href="listvideo-details.html?' + videoNews.id + '" onclick="videonewsClickEvent('+videoNews.id +')">';
                         // content += '<dt><img src="img/news.jpg" height="209" width="350"></dt>';
                         content += '<dt><video src="'+videoNews.videoUrl+'" height="209" width="350" >';
                         content += '<dd>';

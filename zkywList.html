@@ -4,14 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>采购信息</title>
+    <title>决策热点</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/HomePage/SearchFromInStation.js"></script>
-    <script src="js/HomePage/HomePageManager.js"></script>
     <script src="js/ArticleSortManager.js"></script>
-    <script src="js/findExpertByLetter.js"></script>
-    <script src="js/findOrganizationByLetter.js"></script>
-    <script src="js/findResultByCriteria.js"></script>
 </head>
 <body>
     <div class="index-logo">
@@ -31,8 +26,10 @@
     <div class="navbar">
         <div class="container">
                 <ul>
-                    <li><a href="index.html"  class="current">智库首页</a></li>
-                    <li><a href="zkywList.html">智库要闻</a></li>                <li><a href="hotspots.html">决策热点</a></li>                <li><a href="notice.html">通知公告</a></li>
+                    <li><a href="index.html" >智库首页</a></li>
+                    <li><a href="zkywList.html" class="current">智库要闻</a></li>
+                    <li><a href="hotspots.html">决策热点</a></li>
+                    <li><a href="notice.html">通知公告</a></li>
                     <li><a href="conference.html">会议集萃</a></li>
                     <li><a href="forum.html">智库论坛</a></li>
                     <li><a href="expert.html">智库专家</a></li>
@@ -44,15 +41,22 @@
         </div>
     </div>
     <div class="listContent">
-        <div class="leftMenu">
+        <div class="leftMenu" id="leftMenu">
             <ul>
-                <li><a href="##" class="current">采购信息</a></li>
+                <!--<li><a href="##" class="current">热点专题</a></li>-->
+                <!--<li><a href="##">经济</a></li>-->
+                <!--<li><a href="##">政治</a></li>-->
+                <!--<li><a href="##">社会</a></li>-->
+                <!--<li><a href="##">文化</a></li>-->
+                <!--<li><a href="##">生态</a></li>-->
+                <!--<li><a href="##">国际关系</a></li>-->
+                <!--<li><a href="##">党的建设</a></li>-->
             </ul>
         </div>
         <div class="listRight">
-            <div class="listNavbar">您当前位置：首页 > 采购</div>
+            <div class="listNavbar">您当前位置：智库要闻</div>
             <ul id="listRight">
-                <!--<li><a href="buying-details.html">湖北省社科院党组书记张忠家参加 “十月革命与中国特色社会主义”理论研讨会“十月革命与中国特色社会主义"</a><span>[2017-09-22]</span></li>-->
+                <!--<li><a href="hotspots-details.html">湖北省社科院党组书记张忠家参加 “十月革命与中国特色社会主义”理论研讨会“十月革命与中国特色社会主义"</a><span>[2017-09-22]</span></li>-->
                 <!--<li><a href="##">张忠家在《光明日报》发表学习习近平总书记系列重要讲话精神的理论文章</a><span>[2017-09-22]</span></li>-->
                 <!--<li><a href="##">张忠家到马研所支部指导省第十一次党代会精神专题学习</a><span>[2017-09-22]</span></li>-->
                 <!--<li><a href="##">湖北省社科院院长宋亚平率队赴贵州社科院调研</a><span>[2017-09-22]</span></li>-->
@@ -93,17 +97,101 @@
     </div>
 </body>
 <script>
+    var subSonSortArr = [];
+    var parentId = 0;
+    var articleSortArr = [];
+    function leftMenuClickEvent(event, obj, subid){};
+
+    var subId = 0;
+    var nowPage = 0;
+    $(function () {
+        $('.pages a').click(function () {
+            var inputArr = $('.pages').find('a');
+            var i = inputArr.index($(this));
+            if (i == 0) {
+                nowPage--;
+                nowPage < 0 ? nowPage = 0: nowPage;
+            }
+            else if (i == inputArr.length-1){
+                nowPage++;
+            }
+            else {
+                nowPage = i-1;
+            }
+            selectArticleSort(subId,parentId,nowPage, function (result) {
+                if (result != null) {
+                    articleSortArr = result;
+                    var content = '';
+                    for (var i = 0; i < result.length; i++) {
+                        var subObj = result[i];
+                        content += '<li><a href="hotspots-details.html?'+subObj.id+'&'+encodeURI(title)+'">' + subObj.title + '</a><span>['+subObj.addTime+']</span></li>';
+                    }
+                    document.getElementById("listRight").innerHTML = content;
+                    if (result.length > 10) {
+                        $('.listRight div[class = "pages"]')[0].hidden = true;
+                    }
+                }
+            });
+        })
+
+    })
+
     function loadHtmlContent() {
 
+        getArticleSonSort(parentId, function (result) {
+            if (result != null) {
+                sonsortArr = result;
+                for (var i = 0; i < sonsortArr.length; i++) {
+                    var subObj = sonsortArr[i];
+                    if (subObj.name == document.title) {
+                        parentId = subObj.id;
+                        break;
+                    }
+                }
+                getArticleSonSort(parentId, function (result) {
+                    if (result != null) {
+                        subSonSortArr = result;
+                        var content = '<ul>';
+                        for (var i = 0; i < result.length; i++) {
+                            var subObj = result[i];
+                            content += '<li><a href="##' + subObj.id + '" onclick="leftMenuClickEvent(event, this,'+subObj.id+')"' + (i == 0 ? ' class="current">' : '>') + subObj.name + '</a></li>';
+                        }
+                        content += '</ul>';
+                        document.getElementById("leftMenu").innerHTML = content;
+                        leftMenuClickEvent(null, null);
+                    }
+                });
+            }
+        });
+    }
+    loadHtmlContent();
+
+    function leftMenuClickEvent(event, obj, subid) {
+        var title = '热点专题';
+        if (obj != null) {
+            for (var i = 0; i < obj.parentElement.parentElement.childElementCount; i++) {
+                var aobj = obj.parentElement.parentElement.children[i].children[0];
+                aobj.className = null;
+                if (obj == aobj) {
+                    continue;
+                }
+            }
+            obj.className = "current";
+            document.getElementsByClassName("listNavbar")[0].textContent = "您当前位置：决策热点 > "+obj.textContent;
+            title = obj.textContent;
+        }
+        subId = subid;
         document.getElementById("listRight").innerHTML = '';
-        $('.listRight div[class = "pages"]')[0].hidden = true
-        selectArticleSort(33,27,0, function (result) {
+        $('.listRight div[class = "pages"]')[0].hidden = true;
+        var contentId = window.location.hash.toString();
+        contentId = contentId.substring(2,contentId.length);
+        selectArticleSort(contentId || subSonSortArr[0].id,parentId,nowPage, function (result) {
             if (result != null) {
                 articleSortArr = result;
                 var content = '';
                 for (var i = 0; i < result.length; i++) {
                     var subObj = result[i];
-                    content += '<li><a href="buying-details.html?' + subObj.id + '&' + encodeURI(subObj.title) + '">' + subObj.title + '</a><span>[' + subObj.addTime + ']</span></li>';
+                    content += '<li><a href="hotspots-details.html?'+subObj.id+'&'+encodeURI(title)+'">' + subObj.title + '</a><span>['+subObj.addTime+']</span></li>';
                 }
                 document.getElementById("listRight").innerHTML = content;
                 if (result.length > 10) {
@@ -112,6 +200,6 @@
             }
         });
     }
-    loadHtmlContent();
+
 </script>
 </html>

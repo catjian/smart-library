@@ -12,4 +12,4 @@
 # 智库联盟 union
 # 智库机构 organization
 # 智库成果 achievements
-# 智库数据库 database# smart-library
+# 数据库 database# smart-library

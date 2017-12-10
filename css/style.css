@@ -40,7 +40,7 @@ input{outline: none;}
 /* input */
 .input-230{width: 210px;padding: 0 10px; height: 28px;border: solid 1px #201300;margin-right:19px; }
 /* layout */
-.container{width: 1320px;margin: 0 auto;}
+.container{width: 1200px;margin: 0 auto;}
 .main{width: 1080px;margin: 0 auto;padding-bottom: 119px;}
 .col-left{width:726px;float: left;}
 .col-right{width:338px;float: right;}
