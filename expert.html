@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="js/jquery.min.js"></script>
     <script src="js/findExpertByLetter.js"></script>
+    <script src="js/ArticleSortManager.js"></script>
 </head>
 <body>
     <div class="index-logo">
@@ -15,10 +16,10 @@
         <div class="container">
             <div class="header-search">
                 <ul>
-                    <li><span class="login-bar right"><a href="http://47.104.8.66/home">登录</a><a href="register.html" style="display: none">注册</a></span></li>
+                    <!--<li><span class="login-bar right"><a href="http://47.104.8.66/home">登录</a><a href="register.html" style="display: none">注册</a></span></li>-->
                     <li>
                         <a class="btn-search border-radius5 right" onclick="searchByContentValue()">搜索</a>
-                        <input type="text" class="input-230 border-radius5 right">
+                        <input type="text" class="input-230 border-radius5 right" placeholder="请输入关键字">
                     </li>
                 </ul>
             </div>
@@ -41,13 +42,13 @@
         </div>
     </div>
     <div class="listContent">
-        <div class="leftMenu">
+        <div class="leftMenu" id="leftMenu">
             <ul>
                 <li><a href="##" class="current">智库专家</a></li>
             </ul>
         </div>
         <div class="listRight">
-            <div class="listNavbar">您当前位置：智库专家</div>
+            <div class="listNavbar" id="listNavbar">您当前位置：智库专家</div>
             <div class="ach-search org-search expert-search">
                 <label>专家查询：</label>
                 <input type="text" class="border-radius3 mr10" placeholder="" id="expertSelectTextField">
@@ -90,7 +91,7 @@
                 <a>Z</a>
             </div>
             <div class="org-search-result">
-                <div class="line-spe"><span>国内专家</span></div>
+                <!--<div class="line-spe"><span>国内专家</span></div>-->
                 <ol id="line-spe-china">
                     <!--<li><span>A</span><a href="expert-details.html">安同良</a><a>安实</a><a>安同良</a></li>-->
                     <!--<li><span>B</span><a>包思勤</a><a>卞建林</a><a>巴曙松</a><a>柏良泽</a><a>包思勤</a><a>卞建林</a><a>巴曙松</a><a>柏良泽</a><a>包思勤</a><a>卞建林</a><a>巴曙松</a><a>柏良泽</a><a>包思勤</a><a>卞建林</a><a>巴曙松</a><a>柏良泽</a></li>-->
@@ -123,8 +124,8 @@
                     <!--<li><span>Y</span><a>包思勤</a><a>卞建林</a><a>巴曙松</a><a>柏良泽</a><a>包思勤</a><a>卞建林</a><a>巴曙松</a><a>柏良泽</a></li>-->
                     <!--<li><span>Z</span><a>包思勤</a><a>卞建林</a><a>巴曙松</a><a>柏良泽</a><a>包思勤</a><a>卞建林</a><a>巴曙松</a><a>柏良泽</a></li>-->
                 </ol>
-                <div class="line-spe"><span>国外专家</span></div>
-                <ol id="line-spea-fremdness">
+                <!--<div class="line-spe"><span>国外专家</span></div>-->
+                <!--<ol id="line-spea-fremdness">-->
                     <!--<li><span>A</span><a>Aaron L. Connelly</a><a>Adam Hersh</a><a>Adam Segal</a><a>Alastair Iain Johnston</a></li>-->
                     <!--<li><span>B</span><a>Aaron L. Connelly</a><a>Adam Hersh</a><a>Adam Segal</a><a>Alastair Iain Johnston</a></li>-->
                     <!--<li><span>C</span>-->
@@ -155,7 +156,7 @@
                     <!--<li><span>X</span><a>Aaron L. Connelly</a><a>Adam Hersh</a><a>Adam Segal</a><a>Alastair Iain Johnston</a></li>-->
                     <!--<li><span>Y</span><a>Aaron L. Connelly</a><a>Adam Hersh</a><a>Adam Segal</a><a>Alastair Iain Johnston</a></li>-->
                     <!--<li><span>Z</span><a>Aaron L. Connelly</a><a>Adam Hersh</a><a>Adam Segal</a><a>Alastair Iain Johnston</a></li>-->
-                </ol>
+                <!--</ol>-->
             </div>
         </div>
     </div>
@@ -176,6 +177,7 @@
 </body>
 <script>
     var letterObject;
+    var parentId = 0;
     function loadHtmlContent(letter) {};
 
     $(function(){
@@ -290,7 +292,7 @@
         });
     }
 
-    function loadHtmlContent(letter) {
+    var findChinaExpert = function (letter) {
         findExpertByLetter(letter,0,function (result) {
             document.getElementById("line-spe-china").innerHTML = '';
             letterObject = result;
@@ -320,6 +322,8 @@
                 }
             }
         });
+    }
+    var findfremdnessExpert = function (letter) {
         findExpertByLetter(letter,1,function (result) {
             document.getElementById("line-spea-fremdness").innerHTML = '';
             letterObject = result;
@@ -350,6 +354,74 @@
             }
         });
     }
+
+    var getLeftMenumList  = function () {
+        getArticleSonSort(parentId, function (result) {
+            if (result != null) {
+                sonsortArr = result;
+                for (var i = 0; i < sonsortArr.length; i++) {
+                    var subObj = sonsortArr[i];
+                    if (subObj.name == document.title) {
+                        parentId = subObj.id;
+                        break;
+                    }
+                }
+                getArticleSonSort(parentId, function (result) {
+                    if (result != null) {
+                        subSonSortArr = result;
+                        var content = '<ul>';
+                        for (var i = 0; i < result.length; i++) {
+                            var subObj = result[i];
+                            content += '<li><a href="##' + subObj.id + '" onclick="leftMenuClickEvent(event, this,'+subObj.id+')"' + (i == 0 ? ' class="current">' : '>') + subObj.name + '</a></li>';
+                        }
+                        content += '</ul>';
+                        document.getElementById("leftMenu").innerHTML = content;
+                        leftMenuClickEvent(null, null);
+                    }
+                });
+            }
+        });
+    }
+    function loadHtmlContent(letter) {
+
+        findChinaExpert(letter);
+    }
     loadHtmlContent(null);
+
+    function leftMenuClickEvent(event, obj, subid) {
+        var title = '智库专家';
+        if (obj != null) {
+            for (var i = 0; i < obj.parentElement.parentElement.childElementCount; i++) {
+                var aobj = obj.parentElement.parentElement.children[i].children[0];
+                aobj.className = null;
+                if (obj == aobj) {
+                    continue;
+                }
+            }
+            obj.className = "current";
+            document.getElementsByClassName("listNavbar")[0].textContent = "您当前位置：智库论坛  > "+obj.textContent;
+            title = obj.textContent;
+        }
+
+        subId = subid;
+        document.getElementById("line-spe-china").innerHTML = '';
+//        $('.listRight div[class = "pages"]')[0].hidden = true;
+        var contentId = window.location.hash.toString();
+        contentId = contentId.substring(2,contentId.length);
+        selectArticleSort(contentId || subSonSortArr[0].id,parentId,nowPage, function (result) {
+            if (result != null) {
+                articleSortArr = result;
+                var content = '';
+                for (var i = 0; i < result.length; i++) {
+                    var subObj = result[i];
+                    content += '<li><a href="forum-details.html?'+subObj.id+'&'+encodeURI(title)+'">' + subObj.title + '</a><span>['+subObj.addTime+']</span></li>';
+                }
+                document.getElementById("line-spe-china").innerHTML = content;
+                if (result.length > 10) {
+//                    $('.listRight div[class = "pages"]')[0].hidden = true
+                }
+            }
+        });
+    }
 </script>
 </html>

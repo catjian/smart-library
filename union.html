@@ -14,10 +14,10 @@
         <div class="container">
             <div class="header-search">
                 <ul>
-                    <li><span class="login-bar right"><a href="http://47.104.8.66/home">登录</a><a href="register.html" style="display: none">注册</a></span></li>
+                    <!--<li><span class="login-bar right"><a href="http://47.104.8.66/home">登录</a><a href="register.html" style="display: none">注册</a></span></li>-->
                     <li>
                         <a class="btn-search border-radius5 right" onclick="searchByContentValue()">搜索</a>
-                        <input type="text" class="input-230 border-radius5 right">
+                        <input type="text" class="input-230 border-radius5 right" placeholder="请输入关键字">
                     </li>
                 </ul>
             </div>
@@ -40,13 +40,13 @@
         </div>
     </div>
     <div class="listContent">
-        <div class="leftMenu">
+        <div class="leftMenu" id="leftMenu">
             <ul>
                 <li><a href="##" class="current">智库联盟</a></li>
             </ul>
         </div>
         <div class="listRight">
-            <div class="listNavbar">您当前位置：智库联盟</div>
+            <div class="listNavbar" id="listNavbar">您当前位置：智库联盟</div>
             <div class="ach-search org-search expert-search">
                 <label>联盟查询：</label>
                 <input type="text" class="border-radius3 mr10" placeholder="" id="allianceSelectTextField" onchange="textFieldChangeInput()">
@@ -145,6 +145,7 @@
 </body>
 <script>
 
+    var parentId = 0;
     var organizationType = 0;
     $(function () {
         $('.org-letter span').click(function(){
@@ -241,6 +242,35 @@
         urlMessage = urlMessage.split("&");
         window.location.href = "organization.html?"+subid;
     }
+
+    var getLeftMenumList  = function () {
+        getArticleSonSort(parentId, function (result) {
+            if (result != null) {
+                sonsortArr = result;
+                for (var i = 0; i < sonsortArr.length; i++) {
+                    var subObj = sonsortArr[i];
+                    if (subObj.name == document.title) {
+                        parentId = subObj.id;
+                        break;
+                    }
+                }
+                getArticleSonSort(parentId, function (result) {
+                    if (result != null) {
+                        subSonSortArr = result;
+                        var content = '<ul>';
+                        for (var i = 0; i < result.length; i++) {
+                            var subObj = result[i];
+                            content += '<li><a href="##' + subObj.id + '" onclick="leftMenuClickEvent(event, this,'+subObj.id+')"' + (i == 0 ? ' class="current">' : '>') + subObj.name + '</a></li>';
+                        }
+                        content += '</ul>';
+                        document.getElementById("leftMenu").innerHTML = content;
+                        leftMenuClickEvent(null, null);
+                    }
+                });
+            }
+        });
+    }
+
     function loadHtmlContent(letter) {
 
         findOrganizationByLetter(letter, 1, function (result) {
@@ -275,5 +305,40 @@
     }
     loadHtmlContent(null);
 
+    function leftMenuClickEvent(event, obj, subid) {
+        var title = '智库专家';
+        if (obj != null) {
+            for (var i = 0; i < obj.parentElement.parentElement.childElementCount; i++) {
+                var aobj = obj.parentElement.parentElement.children[i].children[0];
+                aobj.className = null;
+                if (obj == aobj) {
+                    continue;
+                }
+            }
+            obj.className = "current";
+            document.getElementsByClassName("listNavbar")[0].textContent = "您当前位置：智库论坛  > "+obj.textContent;
+            title = obj.textContent;
+        }
+
+        subId = subid;
+        document.getElementById("line-spe-china").innerHTML = '';
+//        $('.listRight div[class = "pages"]')[0].hidden = true;
+        var contentId = window.location.hash.toString();
+        contentId = contentId.substring(2,contentId.length);
+        selectArticleSort(contentId || subSonSortArr[0].id,parentId,nowPage, function (result) {
+            if (result != null) {
+                articleSortArr = result;
+                var content = '';
+                for (var i = 0; i < result.length; i++) {
+                    var subObj = result[i];
+                    content += '<li><a href="forum-details.html?'+subObj.id+'&'+encodeURI(title)+'">' + subObj.title + '</a><span>['+subObj.addTime+']</span></li>';
+                }
+                document.getElementById("line-spe-china").innerHTML = content;
+                if (result.length > 10) {
+//                    $('.listRight div[class = "pages"]')[0].hidden = true
+                }
+            }
+        });
+    }
 </script>
 </html>

@@ -16,10 +16,10 @@
         <div class="container">
             <div class="header-search">
                 <ul>
-                    <li><span class="login-bar right"><a href="http://47.104.8.66/home">登录</a><a href="register.html" style="display: none">注册</a></span></li>
+                    <!--<li><span class="login-bar right"><a href="http://47.104.8.66/home">登录</a><a href="register.html" style="display: none">注册</a></span></li>-->
                     <li>
                         <a class="btn-search border-radius5 right" onclick="searchByContentValue()">搜索</a>
-                        <input type="text" class="input-230 border-radius5 right">
+                        <input type="text" class="input-230 border-radius5 right" placeholder="请输入关键字">
                     </li>
                 </ul>
             </div>
@@ -127,7 +127,7 @@
         selectArticleDetails(contentId[0],function (result) {
             if (result != null) {
                 var content = '<h3 class="relative">' + result.title;
-                content += '<p>'+result.createdDate+'</p>';
+                content += '<p>'+result.addTime+'</p>';
                 content += '</h3>';
                 content += '<div class="article-content pt50 pb100">';
                 content += '<p>' + result.content + '</p>';

@@ -20,10 +20,10 @@
         <div class="container">
             <div class="header-search">
                 <ul>
-                    <li><span class="login-bar right"><a href="http://47.104.8.66/home">登录</a><a href="register.html" style="display: none">注册</a></span></li>
+                    <!--<li><span class="login-bar right"><a href="http://47.104.8.66/home">登录</a><a href="register.html" style="display: none">注册</a></span></li>-->
                     <li>
                         <a class="btn-search border-radius5 right" onclick="searchByContentValue()">搜索</a>
-                        <input type="text" class="input-230 border-radius5 right">
+                        <input type="text" class="input-230 border-radius5 right" placeholder="请输入关键字">
                     </li>
                 </ul>
             </div>
@@ -33,6 +33,7 @@
         <div class="container" id="container">
             <ul>
                 <li><a href="index.html" class="current">智库首页</a></li>
+                <li><a href="hotspots.html">智库要闻</a></li>
                 <li><a href="hotspots.html">决策热点</a></li>
                 <li><a href="notice.html">通知公告</a></li>
                 <li><a href="conference.html">会议集萃</a></li>
@@ -41,7 +42,7 @@
                 <li><a href="union.html">智库联盟</a></li>
                 <li><a href="organization.html">智库机构</a></li>
                 <li><a href="achievements.html">智库成果</a></li>
-                <li><a href="database.html">智库数据库</a></li>
+                <li><a href="database.html">数据库</a></li>
             </ul>
         </div>
     </div>
@@ -350,7 +351,7 @@
                 content += '</li>';
             }
             content += '</ul>';
-            document.getElementById("zkcg-list").innerHTML = content;
+//            document.getElementById("zkcg-list").innerHTML = content;
         });
         selectArticleSort(36,0,0, function (result) {
             var content = '';
