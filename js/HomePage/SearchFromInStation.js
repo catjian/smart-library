@@ -5,7 +5,6 @@
 document.write("<script language=\"javascript\" src=\"js/HttpRequest.js\"><\/script>");
 
 function searchByContentValue() {
-
     var searchInput = getByClass("input-230 border-radius5 right");
     if (searchInput.length == 0){
         return;

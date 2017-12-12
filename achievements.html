@@ -1,224 +1,328 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>智库成果</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/jquery.min.js"></script>
-    <script src="js/findResultByCriteria.js"></script>
-</head>
-<body>
-    <div class="index-logo">
-        <img src="img/index-logo.jpg" width="100%">
-        <div class="container">
-            <div class="header-search">
-                <ul>
-                    <!--<li><span class="login-bar right"><a href="http://47.104.8.66/home">登录</a><a href="register.html" style="display: none">注册</a></span></li>|<li><span class="login-bar right"><a href="http://47.104.8.66/home">登录</a><a href="register.html" style="display: none">注册</a></span></li>-->
-                    <li>
-                        <a class="btn-search border-radius5 right" onclick="searchByContentValue()">搜索</a>
-                        <input type="text" class="input-230 border-radius5 right" placeholder="请输入关键字">
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="navbar">
-        <div class="container">
-                <ul>
-                    <li><a href="index.html">智库首页</a></li>
-                    <li><a href="zkywList.html">智库要闻</a></li>
-                    <li><a href="hotspots.html">决策热点</a></li>                <li><a href="notice.html">通知公告</a></li>
-                    <li><a href="conference.html">会议集萃</a></li>
-                    <li><a href="forum.html">智库论坛</a></li>
-                    <li><a href="expert.html">智库专家</a></li>
-                    <li><a href="union.html">智库联盟</a></li>
-                    <li><a href="organization.html">智库机构</a></li>
-                    <li><a href="achievements.html" class="current">智库成果</a></li>
-                    <li><a href="database.html">数据库</a></li>
-                </ul>
-        </div>
-    </div>
-    <div class="listContent-ach">
-        <div class="leftMenu-ach">
-            <div class="ach-search" style="display: none">
-                <label>查询范围：</label>
-                <div class="relative">
-                    <input type="text" class="border-radius3" placeholder="查询范围：">
-                </div>
-            </div>
-            <div class="ach-tree">
-                <ul>
-                    <li class="allOptions noChildren"><input type="checkbox" width="18px" height="18px" class="checkbox border-radius3"></input>所有项</li>
-                    <li><input type="checkbox"  class="checkbox border-radius3"></input>观点与实践
-                        <dl>
-                            <dt><input type="checkbox" class="checkbox border-radius3"></input>党的建设</dt>
-                            <dt><input type="checkbox"  class="checkbox border-radius3"></input>社会</dt>
-                            <dt><input type="checkbox"  class="checkbox border-radius3"></input>生态</dt>
-                        </dl>
-                    </li>
-                    <li class="noChildren"><input type="checkbox"  class="checkbox border-radius3"></input>国外智库</li>
-                    <li class="noChildren"><input type="checkbox"  class="checkbox border-radius3"></input>政府核心智库合作平台</li>
-                    <li class="noChildren"><input type="checkbox"  class="checkbox border-radius3"></input>成果发布</li>
-                    <li class="noChildren"><input type="checkbox"  class="checkbox border-radius3"></input>专题研究</li>
-                    <li class="noChildren"><input type="checkbox"  class="checkbox border-radius3"></input>智库要闻</li>
-                    <li class="noChildren"><input  type="checkbox" class="checkbox border-radius3"></input>成员单位</li>
-                </ul>
-            </div>
-        </div>
-        <div class="ach-Right pb100">
-            <div class="listNavbar">您当前位置：数据中心 > 成果库</div>
-            <div class="ach-search-R">
-                <ul>
-                    <li><label class="w120">包含全部关键字：</label><input type="text" id="allkeywordText"></li>
-                    <li>
-                        <label>关键字位置：</label>
-                        <div class="radios"><span class="border-radiusAll" id="AllContentSelect"><em class="ach-search-R border-radiusAll radio"></em></span><em>全文</em></div>
-                    </li>
-                    <li style="display: none"><label class="w120">包含全部关键字：</label><input type="text"></li>
-                    <li style="padding:5px 22px;overflow:hidden; display: none">
-                        <label class="left" style="display:block;width:85px;line-height:58px;">时间范围：</label>
-                        <div class="left" style="width:270px;">
-                            <div class="radios"><span class="border-radiusAll"></span><em>一月内</em></div>
-                            <div class="radios"><span class="border-radiusAll"></span><em>半年内</em></div>
-                            <div class="radios"><span class="border-radiusAll"></span><em>一年内</em></div>
-                            <div class="radios"><span class="border-radiusAll"></span><em>三天</em></div>
-                            <div class="radios"><span class="border-radiusAll"></span><em>一周内</em></div>
-                            <div class="radios"><span class="border-radiusAll"></span><em>全部</em></div>
-                        </div>
-                    </li>
-                    <li><label class="w120">不包含的关键字：</label><input type="text" id="nokeywordText"></li>
-                    <li>
-                        <label>排序方式：</label>
-                        <div class="radios mr20 pl10"><span class="border-radiusAll" id="sendDataDown"><em class="ach-search-R border-radiusAll radio"></em></span><em>发布日期降序</em></div>
-                        <div class="radios"><span class="border-radiusAll" id="sendDataUp"></span><em>发布日期升序</em></div>
-                    </li>
-                    <li class="center" style="width:100%;"><a href="##" class="submit border-radius5" style="width:90px;" id="selectButton">查询</a></li>
-                </ul>
-            </div>
-            <div class="ach-list">
-                <ul>
-                    <!--<li>-->
-                        <!--<h3><a href="achievements-details.html">江苏省苏州市区公交优先发展三年行动计划（2013～2015年）</a><span>[2017-03-13]</span></h3>-->
-                        <!--<h6>作者: 梁仰椿，国务院发展研究中心产业经济研究部</h6>-->
-                        <!--<p>围内新建公交电子站牌270个，完好率达到90%。拓展公交信息、查询发布系统，通过网站，手机、电话查询电话查询电话查询公交信息。在主要的综合交通枢纽、中心城区、重要商业文化中心区建设停车诱导系统，研发交通信息系统研发交通信息系统研发交通信息系统研发交通信息系统</p>-->
-                    <!--</li>-->
-                    <!--<li>-->
-                        <!--<h3><a>江苏省苏州市区公交优先发展三年行动计划（2013～2015年）</a><span>[2017-03-13]</span></h3>-->
-                        <!--<h6>作者: 梁仰椿，国务院发展研究中心产业经济研究部</h6>-->
-                        <!--<p>围内新建公交电子站牌270个，完好率达到90%。拓展公交信息、查询发布系统，通过网站，手机、电话查询电话查询电话查询公交信息。在主要的综合交通枢纽、中心城区、重要商业文化中心区建设停车诱导系统，研发交通信息系统研发交通信息系统研发交通信息系统研发交通信息系统</p>-->
-                    <!--</li>-->
-                </ul>
-            </div>
-        </div>
-    </div>
-</body>
-<script>
-    var checkedArr = [];
 
-    function loadHtmlContent(keyword,textTypeId,sort) {
-        findResultByCriteria(keyword,textTypeId,sort,function (result) {
-            if (result != null) {
-                var content = '';
-                $('.ach-list ul')[0].innerHTML = content;
-                for (var i = 0; i < result.length; i++) {
-                    var subObj = result[i];
-                    content += '<li>';
-                    content += '<h3><a href="achievements-details.html?'+subObj.id+'">'+subObj.title+'</a><span>['+subObj.addTime+']</span></h3>';
-                    content += '<h6>作者: '+subObj.author+'</h6>';
-                    content += '<p>'+subObj.content+'</p>';
-                    content += '</li>';
-                }
-                $('.ach-list ul')[0].innerHTML = content;
-            }
-        })
-    }
-    loadHtmlContent(null, null, null);
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>智库成果</title>
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/swiper-3.4.2.min.css" />
+		<script src="js/jquery.min.js"></script>
+		<script src="js/findResultByCriteria.js"></script>
+	</head>
 
-    $(function(){
-        $('#AllContentSelect').click(function () {
-            if ($(this).children().length > 0) $(this).children().remove();
-            else $(this).append('<em class="ach-search-R border-radiusAll radio"></em>');
-        });
-        $('#sendDataDown').click(function () {
-            if ($(this).children().length == 0) {
-                $(this).append('<em class="ach-search-R border-radiusAll radio"></em>');
-                $('#sendDataUp').children().remove();
-            }
-        });
-        $('#sendDataUp').click(function () {
-            if ($(this).children().length == 0) {
-                $(this).append('<em class="ach-search-R border-radiusAll radio"></em>');
-                $('#sendDataDown').children().remove();
-            }
-        });
-        $('#selectButton').click(function () {
-            var allkeyword = $('#allkeywordText')[0].value;
-            var nokeyword = $('#nokeywordText')[0].value;
+	<body>
+		<div class="index-logo">
+			<div id="container1" class="swiper-container">
+				<div id="swiperbox" class="swiper-wrapper">
+				</div>
+			</div>
+			<div class="container">
+				<div class="header-search">
+					<ul>
+						<!--<li><span class="login-bar right"><a href="http://47.104.8.66/home">登录</a><a href="register.html" style="display: none">注册</a></span></li>-->
+						<li>
+							<a class="btn-search border-radius5 right" onclick="searchByContentValue()">搜索</a>
+							<input type="text" class="input-230 border-radius5 right" placeholder="请输入关键字">
+						</li>
+						<li style="position:absolute;top:34px;font-size:16px;width:360px;right:-190px;">
+							<script>
+								document.write((zjd = new Date()).getFullYear() + "年" + (zjd.getMonth() + 1) + "月" + zjd.getDate() + "日 星期" + "日一二三四五六".charAt(zjd.getDay()));
+							</script>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="navbar">
+			<div class="container">
+				<ul>
+					<li><a href="index.html">智库首页</a></li>
+					<li><a href="zkywList.html">智库要闻</a></li>
+					<li><a href="hotspots.html">决策热点</a></li>
+					<li><a href="notice.html">通知公告</a></li>
+					<li><a href="conference.html">会议集萃</a></li>
+					<li><a href="forum.html">智库论坛</a></li>
+					<li><a href="expert.html">智库专家</a></li>
+					<li><a href="union.html">智库联盟</a></li>
+					<li><a href="organization.html">智库机构</a></li>
+					<li><a href="achievements.html" class="current">智库成果</a></li>
+					<li><a href="database.html">数据库</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="listContent-ach">
+			<div class="leftMenu" id="leftMenu">
+				<ul>
+					<li><a class="current">研究领域</a></li>
+					<!--<li><a href="#">党建</a></li>-->
+					<!--<li><a href="#">社会</a></li>-->
+					<!--<li><a href="#">生态</a></li>-->
+					<!--<li><a href="#">政治</a></li>-->
+					<!--<li><a href="#">经济</a></li>-->
+					<!--<li><a href="#">文化</a></li>-->
+					<!--<li><a href="#">热点专题</a></li>-->
+					<!--<li><a href="#">国际关系</a></li>-->
+				</ul>
+			</div>
+			<div class="leftMenu-ach">
+				<div class="ach-search" style="display: none">
+					<label>查询范围：</label>
+					<div class="relative">
+						<input type="text" class="border-radius3" placeholder="查询范围：">
+					</div>
+				</div>
 
-            var textTypeId = '';
-            var textIdArr = ['','',19,15,17,0,0,38,0,41,0];
-            for (var i = 0; i < checkedArr.length; i++) {
-                var isClick = checkedArr[i];
-                if (isClick){
-                    textTypeId += textIdArr[i];
-                }
-            }
-            loadHtmlContent($('#allkeywordText')[0].value, textTypeId, ($('#sendDataDown').children().length == 0)?0:1);
+				<!--<div class="ach-tree">
+					<ul>
+						<li class="allOptions noChildren">
+							<input type="checkbox" width="18px" height="18px" class="checkbox border-radius3"></input>所有项</li>
+						<li>
+							<input type="checkbox" class="checkbox border-radius3"></input>观点与实践
+							<dl>
+								<dt><input type="checkbox" class="checkbox border-radius3"></input>党的建设</dt>
+								<dt><input type="checkbox"  class="checkbox border-radius3"></input>社会</dt>
+								<dt><input type="checkbox"  class="checkbox border-radius3"></input>生态</dt>
+							</dl>
+						</li>
+						<li class="noChildren">
+							<input type="checkbox" class="checkbox border-radius3"></input>国外智库</li>
+						<li class="noChildren">
+							<input type="checkbox" class="checkbox border-radius3"></input>政府核心智库合作平台</li>
+						<li class="noChildren">
+							<input type="checkbox" class="checkbox border-radius3"></input>成果发布</li>
+						<li class="noChildren">
+							<input type="checkbox" class="checkbox border-radius3"></input>专题研究</li>
+						<li class="noChildren">
+							<input type="checkbox" class="checkbox border-radius3"></input>智库要闻</li>
+						<li class="noChildren">
+							<input type="checkbox" class="checkbox border-radius3"></input>成员单位</li>
+					</ul>
+				</div>-->
+			</div>
+			<div class="ach-Right pb100">
+				<div class="listNavbar">您当前位置：数据中心 > 成果库</div>
+				<div class="ach-search-R">
+					<ul>
+						<li>
+							<label class="w120">关键字：</label>
+							<input type="text" id="allkeywordText">
+						</li>
+						<li style="display: none">
+							<label class="w120">包含全部关键字：</label>
+							<input type="text">
+						</li>
+						<li style="padding:5px 22px;overflow:hidden; display: none">
+							<label class="left" style="display:block;width:85px;line-height:58px;">时间范围：</label>
+							<div class="left" style="width:270px;">
+								<div class="radios"><span class="border-radiusAll"></span><em>一月内</em></div>
+								<div class="radios"><span class="border-radiusAll"></span><em>半年内</em></div>
+								<div class="radios"><span class="border-radiusAll"></span><em>一年内</em></div>
+								<div class="radios"><span class="border-radiusAll"></span><em>三天</em></div>
+								<div class="radios"><span class="border-radiusAll"></span><em>一周内</em></div>
+								<div class="radios"><span class="border-radiusAll"></span><em>全部</em></div>
+							</div>
+						</li>
+						<li>
+							<label>排序方式：</label>
+							<div class="radios mr20 pl10"><span class="border-radiusAll" id="sendDataDown"><em class="ach-search-R border-radiusAll radio"></em></span><em>发布日期降序</em></div>
+							<div class="radios"><span class="border-radiusAll" id="sendDataUp"></span><em>发布日期升序</em></div>
+						</li>
+						<li class="center" style="width:100%;"><a href="##" class="submit border-radius5" style="width:90px;" id="selectButton">查询</a></li>
+					</ul>
+				</div>
+				<div class="ach-list" id="listRight">
+					<ul>
+						<li>
+						<h3><a href="achievements-details.html">江苏省苏州市区公交优先发展三年行动计划（2013～2015年）</a><span>[2017-03-13]</span></h3>
+						<h6>作者: 梁仰椿，国务院发展研究中心产业经济研究部</h6>
+						<p>围内新建公交电子站牌270个，完好率达到90%。拓展公交信息、查询发布系统，通过网站，手机、电话查询电话查询电话查询公交信息。在主要的综合交通枢纽、中心城区、重要商业文化中心区建设停车诱导系统，研发交通信息系统研发交通信息系统研发交通信息系统研发交通信息系统</p>
+						</li>
+						<!--<li>-->
+						<!--<h3><a>江苏省苏州市区公交优先发展三年行动计划（2013～2015年）</a><span>[2017-03-13]</span></h3>-->
+						<!--<h6>作者: 梁仰椿，国务院发展研究中心产业经济研究部</h6>-->
+						<!--<p>围内新建公交电子站牌270个，完好率达到90%。拓展公交信息、查询发布系统，通过网站，手机、电话查询电话查询电话查询公交信息。在主要的综合交通枢纽、中心城区、重要商业文化中心区建设停车诱导系统，研发交通信息系统研发交通信息系统研发交通信息系统研发交通信息系统</p>-->
+						<!--</li>-->
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="js/swiper-3.4.2.min.js"></script>
+	<script src="js/HomePage/HomePageManager.js"></script>
+	<script src="js/ArticleSortManager.js"></script>
+	<script>
+		findTitleImageByState();
+		var checkedArr = [];
 
-        });
-
-        $('.ach-tree input').each(function (i) {
-            checkedArr.push(false);
-        })
-        var clickInput;
-        $('.ach-tree input').click(function () {
-            clickInput = $(this);
-        })
-        $('.ach-tree').click(function () {
-            var inputArr = $(this).find('input');
-            var i = inputArr.index(clickInput);
-            var inputTitle = inputArr[i];
-            if (i == 0) {
-                for (var j = 0; j < inputArr.length; j++) {
-                    checkedArr.splice(j, 1, inputTitle.checked);
-                    var inputTitleN = inputArr[j];
-                    inputTitleN.checked = inputTitle.checked;
-                }
-            }
-            else {
-                if (!inputTitle.checked) {
-                    inputArr[0].checked = false;
-                }
-                if (i >= 1 && i <= 4) {
-                    if (i == 1) {
-                        for (var j = 1; j < 5; j++) {
-                            checkedArr.splice(j, 1, inputTitle.checked);
-                            var inputTitleN = inputArr[j];
-                            inputTitleN.checked = inputTitle.checked;
+		var parentId = 0;
+        var getLeftMenumList = function() {
+            getArticleSonSort(parentId, function(result) {
+                if (result != null) {
+                    sonsortArr = result;
+                    parentId = -1;
+                    for (var i = 0; i < sonsortArr.length; i++) {
+                        var subObj = sonsortArr[i];
+                        if (subObj.name == document.title) {
+                            parentId = subObj.id;
+                            break;
                         }
                     }
-                    else {
-                        if (!inputTitle.checked) inputArr[1].checked = false;
-                        else {
-                            checkedArr.splice(i, 1, inputTitle.checked);
-                            if (checkedArr[2] && checkedArr[3] && checkedArr[4]) {
-                                inputArr[1].checked = true;
+                    if (parentId == -1) return;
+                    getArticleSonSort(parentId, function(result) {
+                        if (result != null) {
+                            subSonSortArr = result;
+                            var content = '<ul>';
+                            for (var i = 0; i < result.length; i++) {
+                                var subObj = result[i];
+                                content += '<li><a href="##' + subObj.id + '" onclick="leftMenuClickEvent(event, this,' + subObj.id + ')"' + (i == 0 ? ' class="current">' : '>') + subObj.name + '</a></li>';
                             }
+                            content += '</ul>';
+                            document.getElementById("leftMenu").innerHTML = content;
+                            leftMenuClickEvent(null, null);
                         }
+                    });
+                }
+            });
+        }
+
+		function loadHtmlContent(keyword, textTypeId, sort) {
+            getLeftMenumList();
+			findResultByCriteria(keyword, textTypeId, sort, function(result) {
+				if (result != null) {
+					var content = '';
+//					$('.ach-list ul')[0].innerHTML = content;
+					for (var i = 0; i < result.length; i++) {
+						var subObj = result[i];
+						content += '<li>';
+						content += '<h3><a href="achievements-details.html?' + subObj.id + '">' + subObj.title + '</a><span>[' + subObj.addTime + ']</span></h3>';
+						content += '<h6>作者: ' + subObj.author + '</h6>';
+						content += '<p>' + subObj.content + '</p>';
+						content += '</li>';
+					}
+//					$('.ach-list ul')[0].innerHTML = content;
+				}
+			})
+		}
+		loadHtmlContent(null, null, null);
+		$(function() {
+			$('#AllContentSelect').click(function() {
+				if ($(this).children().length > 0) $(this).children().remove();
+				else $(this).append('<em class="ach-search-R border-radiusAll radio"></em>');
+			});
+			$('#sendDataDown').click(function() {
+				if ($(this).children().length == 0) {
+					$(this).append('<em class="ach-search-R border-radiusAll radio"></em>');
+					$('#sendDataUp').children().remove();
+				}
+			});
+			$('#sendDataUp').click(function() {
+				if ($(this).children().length == 0) {
+					$(this).append('<em class="ach-search-R border-radiusAll radio"></em>');
+					$('#sendDataDown').children().remove();
+				}
+			});
+			$('#selectButton').click(function() {
+				var allkeyword = $('#allkeywordText')[0].value;
+//				var nokeyword = $('#nokeywordText')[0].value;
+				var textTypeId = '';
+				var textIdArr = ['', '', 19, 15, 17, 0, 0, 38, 0, 41, 0];
+				for (var i = 0; i < checkedArr.length; i++) {
+					var isClick = checkedArr[i];
+					if (isClick) {
+						textTypeId += textIdArr[i];
+					}
+				}
+				loadHtmlContent($('#allkeywordText')[0].value, textTypeId, ($('#sendDataDown').children().length == 0) ? 0 : 1);
+			});
+			$('.ach-tree input').each(function(i) {
+				checkedArr.push(false);
+			})
+			var clickInput;
+			$('.ach-tree input').click(function() {
+				clickInput = $(this);
+			})
+			$('.ach-tree').click(function() {
+				var inputArr = $(this).find('input');
+				var i = inputArr.index(clickInput);
+				var inputTitle = inputArr[i];
+				if (i == 0) {
+					for (var j = 0; j < inputArr.length; j++) {
+						checkedArr.splice(j, 1, inputTitle.checked);
+						var inputTitleN = inputArr[j];
+						inputTitleN.checked = inputTitle.checked;
+					}
+				} else {
+					if (!inputTitle.checked) {
+						inputArr[0].checked = false;
+					}
+					if (i >= 1 && i <= 4) {
+						if (i == 1) {
+							for (var j = 1; j < 5; j++) {
+								checkedArr.splice(j, 1, inputTitle.checked);
+								var inputTitleN = inputArr[j];
+								inputTitleN.checked = inputTitle.checked;
+							}
+						} else {
+							if (!inputTitle.checked) inputArr[1].checked = false;
+							else {
+								checkedArr.splice(i, 1, inputTitle.checked);
+								if (checkedArr[2] && checkedArr[3] && checkedArr[4]) {
+									inputArr[1].checked = true;
+								}
+							}
+						}
+					}
+				}
+				checkedArr.splice(i, 1, inputTitle.checked);
+				for (var j = 1; j < inputArr.length; j++) {
+					if (!checkedArr[j]) {
+						return;
+					}
+				}
+				inputArr[0].checked = true;
+			})
+		});
+
+        function leftMenuClickEvent(event, obj, subid) {
+            var title = '党建';
+            if (obj != null) {
+                for (var i = 0; i < obj.parentElement.parentElement.childElementCount; i++) {
+                    var aobj = obj.parentElement.parentElement.children[i].children[0];
+                    aobj.className = null;
+                    if (obj == aobj) {
+                        continue;
                     }
                 }
+                obj.className = "current";
+                document.getElementsByClassName("listNavbar")[0].textContent = "您当前位置：数据中心 > 成果库 > " + obj.textContent;
+                title = obj.textContent;
             }
-            checkedArr.splice(i, 1, inputTitle.checked);
-            for (var j = 1; j < inputArr.length; j++) {
-                if (!checkedArr[j]){
-                    return;
+            subId = subid;
+            document.getElementById("listRight").innerHTML = '';
+//            $('.listRight div[class = "pages"]')[0].hidden = true;
+            var contentId = window.location.hash.toString();
+            contentId = contentId.substring(2, contentId.length);
+            selectArticleSort(contentId || subSonSortArr[0].id, parentId, 0, function(result) {
+                if (result != null) {
+                    articleSortArr = result;
+                    var content = '';
+                    for (var i = 0; i < result.length; i++) {
+                        var subObj = result[i];
+                        content += '<li>';
+                        content += '<h3><a href="achievements-details.html?' + subObj.id + '">' + subObj.title + '</a><span>[' + subObj.addTime + ']</span></h3>';
+                        content += '<h6>作者: ' + (subObj.author?subObj.author:'') + '</h6>';
+                        content += '<p>' + subObj.content.substring(0,100) + '</p>';
+                        content += '</li>';
+                    }
+                    document.getElementById("listRight").innerHTML = content;
+                    if (result.length > 10) {
+//                        $('.listRight div[class = "pages"]')[0].hidden = true;
+                    }
                 }
-            }
-            inputArr[0].checked = true;
-        })
-    });
+            });
+        }
+	</script>
 
-</script>
 </html>

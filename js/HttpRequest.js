@@ -76,3 +76,38 @@ http.post = function (option, callback) {
     option.timeout = 1000*30;
     this.quest(option, callback);
 };
+
+
+
+//友情链接   合作媒体
+
+function Link(type,callBack){
+	//type=3改2
+	if (type == 3) type = 2;
+    http.get(BaseUrl+"/frontEnd/getBlogroll?type="+type,function(err,result){
+        if(result.status == '0'){
+            callBack(result)
+        }
+    })
+}
+
+$('.item').click(function(){
+    $(this).addClass('active').siblings().removeClass('active');
+    var index = $(this).index()+1;
+    Link(index,function(result){
+        var html = '';
+        var data = result.result;
+        for(var i=0;i<data.length;i++){
+            html += '<li><a href="'+data[i].linkurl+'"><img src="'+data[i].imgUrl+'" alt=""></a></li>'
+        }
+        $('.linkContent ul').html(html)
+    })
+})
+Link(1,function(result){
+    var html = '';
+    var data = result.result;
+    for(var i=0;i<data.length;i++){
+        html += '<li><a href="'+data[i].linkurl+'"><img src="'+data[i].imgUrl+'" alt=""></a></li>'
+    }
+    $('.linkContent ul').html(html)
+})
