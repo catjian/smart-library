@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4450435e-1c24-44ec-9436-105457043fd2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/HomePage/HomePageManager.js" afterPath="$PROJECT_DIR$/js/HomePage/HomePageManager.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,11 +14,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1365">
-              <caret line="91" column="70" lean-forward="false" selection-start-line="91" selection-start-column="70" selection-end-line="91" selection-end-column="70" />
+            <state relative-caret-position="506">
+              <caret line="389" column="114" lean-forward="false" selection-start-line="389" selection-start-column="114" selection-end-line="389" selection-end-column="114" />
               <folding />
             </state>
           </provider>
@@ -75,11 +74,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HomePageManager.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HomePageManager.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/HomePage/HomePageManager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="443">
-              <caret line="227" column="30" lean-forward="false" selection-start-line="218" selection-start-column="27" selection-end-line="227" selection-end-column="31" />
+            <state relative-caret-position="2433">
+              <caret line="227" column="30" lean-forward="false" selection-start-line="227" selection-start-column="30" selection-end-line="227" selection-end-column="30" />
               <folding>
                 <marker date="1513046907000" expanded="true" signature="5027:5033" ph="&amp;nbsp;" />
                 <marker date="1513046907000" expanded="true" signature="5033:5039" ph="&amp;nbsp;" />
@@ -236,8 +235,8 @@
         <option value="$PROJECT_DIR$/zkyw-details.html" />
         <option value="$PROJECT_DIR$/zkywList.html" />
         <option value="$PROJECT_DIR$/css/style.css" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/HomePage/HomePageManager.js" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -785,12 +784,12 @@
       <workItem from="1512788346470" duration="6701000" />
       <workItem from="1512907718421" duration="1000" />
       <workItem from="1512907813521" duration="1558000" />
-      <workItem from="1513046812994" duration="96000" />
+      <workItem from="1513046812994" duration="282000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111521000" />
+    <option name="totallyTimeSpent" value="111707000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1366" y="0" width="1920" height="1080" extended-state="0" />
@@ -1132,14 +1131,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1365">
-          <caret line="91" column="70" lean-forward="false" selection-start-line="91" selection-start-column="70" selection-end-line="91" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hotspots.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="460">
@@ -1150,8 +1141,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/HomePage/HomePageManager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="227" column="30" lean-forward="false" selection-start-line="218" selection-start-column="27" selection-end-line="227" selection-end-column="31" />
+        <state relative-caret-position="2433">
+          <caret line="227" column="30" lean-forward="false" selection-start-line="227" selection-start-column="30" selection-end-line="227" selection-end-column="30" />
           <folding>
             <marker date="1513046907000" expanded="true" signature="5027:5033" ph="&amp;nbsp;" />
             <marker date="1513046907000" expanded="true" signature="5033:5039" ph="&amp;nbsp;" />
@@ -1160,6 +1151,14 @@
             <marker date="1513046907000" expanded="true" signature="7846:7852" ph="&amp;nbsp;" />
             <marker date="1513046907000" expanded="true" signature="7852:7858" ph="&amp;nbsp;" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="389" column="114" lean-forward="false" selection-start-line="389" selection-start-column="114" selection-end-line="389" selection-end-column="114" />
+          <folding />
         </state>
       </provider>
     </entry>
