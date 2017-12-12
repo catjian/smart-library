@@ -29,7 +29,9 @@ function findTitleImageByState() {
 				{
 					var resultObj = result.result;
 					var str;
-					for (var i = 0; i < resultObj.length; i++) {
+					// for (var i = 0; i < resultObj.length; i++)
+					for (var i = resultObj.length-1; i >= 0; i--)
+					{
 						console.log(resultObj[i].imgUrl);
 						str += '<div class="swiper-slide"><img  src=' + resultObj[i].imgUrl + ' width="100%"></div>';
 					}
@@ -214,15 +216,17 @@ function getRecommendArticle(recommend) {
 				{
 					recommendContentArr = result.result;
 					if (recommendContentArr.length > 0) {
-						if (recommend == 1) {
-							var content = '<h3>文章推荐</h3>';
-							content += '<ul>';
-							for (var i = 0; i < recommendContentArr.length; i++) {
-								var subObj = recommendContentArr[i];
-								content += '<li><a href="##' + subObj.id + '" onclick="RecommendListClickEvent(' + subObj.id + ')">•&nbsp;&nbsp;' + subObj.title + '</a></li>';
-							}
-							// document.getElementById("RecommendList").innerHTML = content;
-						} else {
+						// if (recommend == 1) {
+						// 	var content = '<h3>文章推荐</h3>';
+						// 	content += '<ul>';
+						// 	for (var i = 0; i < recommendContentArr.length; i++) {
+						// 		var subObj = recommendContentArr[i];
+						// 		content += '<li><a href="##' + subObj.id + '" onclick="RecommendListClickEvent(' + subObj.id + ')">•&nbsp;&nbsp;' + subObj.title + '</a></li>';
+						// 	}
+						// 	// document.getElementById("RecommendList").innerHTML = content;
+						// }
+						// else
+						{
 							var content = '<div class="pages" data-scro="list">';
 							content += '<ul>';
 							for (var i = 0; i < recommendContentArr.length; i++) {
