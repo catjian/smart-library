@@ -76,7 +76,7 @@ function getArticle(textTypeId, callBack) {
 							for (var i = 0; i < articleArr.length; i++) {
 								var subObj = articleArr[i];
 								content += '<li>';
-								content += '<a href="news-details.html?' + subObj.id + '" onclick="articleClickEvent(' + subObj.id + ')">';
+								content += '<a href="zkyw-details.html?' + subObj.id + '" onclick="articleClickEvent(' + subObj.id + ')">';
 								content += '<div><img src="' + subObj.imgUrl + '" alt=""></div>';
 								content += '<h4>' + subObj.title + '</h4>';
 								// content += '<p>' + subObj.content.length > 168 ? subObj.content.substring(0,168):subObj.content + '</p>';
