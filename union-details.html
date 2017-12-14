@@ -9,8 +9,21 @@
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" type="text/css" href="css/swiper-3.4.2.min.css" />
 	</head>
-
 	<body>
+		<div class="top_nav">
+			<ul class="top_nav_center">
+				<li class="top_nav_search">
+					<a class="btn-search border-radius5 right" onclick="searchByContentValue()">搜索</a>
+					<input type="text" class="input-230 border-radius5 right" placeholder="请输入关键字">
+				</li>
+				<li class="top_nav_collect"><a href="javascript:void(0);" onclick="AddFavorite(document.title,window.location)">加入收藏</a></li>
+				<li class="top_nav_index"><a href="javascript:void(0);" onclick="SetHome(this,window.location)">设为首页</a></li>
+				<li class="top_nav_weibo"><a>微博平台</a></li>
+				<li class="top_nav_weibo_icon">
+					<a href="https://weibo.com/#_loginLayer_1513155457173"></a>
+				</li>
+			</ul>
+		</div>
 		<div class="index-logo">
 			<div id="container1" class="swiper-container">
 				<div id="swiperbox" class="swiper-wrapper">
@@ -19,12 +32,7 @@
 			<div class="container">
 				<div class="header-search">
 					<ul>
-						<!--<li><span class="login-bar right"><a href="http://47.104.8.66/home">登录</a><a href="register.html" style="display: none">注册</a></span></li>-->
-						<li>
-							<a class="btn-search border-radius5 right" onclick="searchByContentValue()">搜索</a>
-							<input type="text" class="input-230 border-radius5 right" placeholder="请输入关键字">
-						</li>
-						<li style="position:absolute;top:34px;font-size:16px;width:360px;right:-190px;">
+						<li style="position:absolute;top:-30px;font-size:16px;width:360px;right:-190px;">
 							<script>
 								document.write((zjd = new Date()).getFullYear() + "年" + (zjd.getMonth() + 1) + "月" + zjd.getDate() + "日 星期" + "日一二三四五六".charAt(zjd.getDay()));
 							</script>
@@ -37,7 +45,7 @@
 			<div class="container">
 				<ul>
 					<li><a href="index.html">智库首页</a></li>
-					<li><a href="zkywList.html">智库要闻</a></li>
+					<!--<li><a href="zkywList.html">智库要闻</a></li>
 					<li><a href="hotspots.html">决策热点</a></li>
 					<li><a href="notice.html">通知公告</a></li>
 					<li><a href="conference.html">会议集萃</a></li>
@@ -46,6 +54,13 @@
 					<li><a href="union.html" class="current">智库联盟</a></li>
 					<li><a href="organization.html">智库机构</a></li>
 					<li><a href="achievements.html">智库成果</a></li>
+					<li><a href="database.html">数据库</a></li>-->
+					<li><a href="zkywList.html">智库动态</a></li>
+					<li><a href="hotspots.html">决策热点</a></li>
+					<li><a href="conference.html">会议集萃</a></li>
+					<li><a href="forum.html">智库论坛</a></li>
+					<li><a href="union.html" class="current">智库联盟</a></li>
+					<li><a href="organization.html">智库机构</a></li>
 					<li><a href="database.html">数据库</a></li>
 				</ul>
 			</div>
